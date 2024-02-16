@@ -1,0 +1,73 @@
+name: shopefuge_ui_kit
+description: Shopefuge Ecommerce UI kit for Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+# Flutter 3.16.3
+# Dart 3.2.3
+version: 1.1.2
+
+environment:
+  sdk: ">=2.19.2 <3.0.0"
+
+# Dependencies specify other packages that your package needs in order to work.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  cupertino_icons: ^1.0.2
+  get: ^4.6.5
+  google_fonts:
+  hexcolor: ^3.0.1
+  pinput: ^2.2.31
+  dotted_line: ^3.1.0
+  sizer: ^2.0.15
+  timelines: ^0.1.0
+  device_preview: ^1.1.0
+  syncfusion_flutter_sliders: ^21.2.6
+  flutter_rating_bar: ^4.0.1
+  bubble_tab_indicator: ^0.1.6
+  shared_preferences: ^2.2.2
+  cupertino_will_pop_scope: ^1.2.1
+  flutter_localization: ^0.2.0
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # rules and activating additional ones.
+  flutter_lints: ^2.0.0
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # the material Icons class.
+  uses-material-design: true
+
+ # ASSETS
+  assets:
+    - assets/image/
+    - assets/icon/
+    - assets/fonts/
+
+  # FONTS
+  fonts:
+    - family: Poppins_Bold
+      fonts:
+        - asset: assets/fonts/Poppins-Bold.ttf
+
+    - family: Poppins_Medium
+      fonts:
+        - asset: assets/fonts/Poppins-Medium.ttf
+
+    - family: Poppins_Regular
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+
+    - family: Poppins_SemiBold
+      fonts:
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+
