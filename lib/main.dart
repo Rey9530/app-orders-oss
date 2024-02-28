@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'localizations/app_translation.dart';
 import 'controller/storage_controller/storage_controller.dart';
 import 'view/home_categories/fashion_category.dart';
@@ -57,6 +58,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   String? languageCode = await StorageController.instance.getLanguage();
   String? countryCode = await StorageController.instance.getCountryCode();
+  await GetStorage.init();
   runApp(
     MyApp(
       languageCode: languageCode,
@@ -66,8 +68,11 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key, this.languageCode, this.countryCode})
-      : super(key: key);
+  const MyApp({
+    Key? key,
+    this.languageCode,
+    this.countryCode,
+  }) : super(key: key);
   final String? languageCode;
   final String? countryCode;
 
@@ -77,7 +82,7 @@ class MyApp extends StatelessWidget {
       builder: (context, orientation, deviceType) {
         return GetMaterialApp(
           translationsKeys: AppTranslation.translationsKeys,
-          title: "Shopfuge",
+          title: "Shop",
           scrollBehavior: const MaterialScrollBehavior().copyWith(
             dragDevices: {
               PointerDeviceKind.mouse,

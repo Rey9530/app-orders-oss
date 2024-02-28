@@ -19,20 +19,20 @@ class MyCartController extends GetxController {
   List cartImages = [
     AppImage.designjeans,
     AppImage.nokia,
-    AppImage.coatrockerz,
-    AppImage.dropper
   ];
 
   List cartColors = [
     AppColors.blueColor,
     AppColors.pinkColor,
-    AppColors.blackColor,
-    AppColors.blueColor
   ];
 
   List description = [
-    "Size: M",
-    "2 GB Ram,32 GB Storage",
-    "Connector: Wireless",
+    "SUPER LACTEOS METAPAN",
+    "LACTEOS DAYSI",
+  ];
+
+  List names = [
+    "ROBERTO ULISES FIGUEROA CASTILLO",
+    "LOS QUESITOS",
   ];
 }

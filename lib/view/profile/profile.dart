@@ -2,6 +2,7 @@ import 'package:cupertino_will_pop_scope/cupertino_will_pop_scope.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../../../config/approutes/approutes.dart';
 import '../../../config/colors/colors.dart';
@@ -18,6 +19,7 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GetStorage box = GetStorage();
     return ConditionalWillPopScope(
       onWillPop: () => _willPop(context),
       shouldAddCallback: false,
@@ -58,7 +60,7 @@ class Profile extends StatelessWidget {
                           ),
                           child: Center(
                             child: Text(
-                              "R",
+                              box.read("nombre").toString()[0],
                               style: TextStyle(
                                 color: AppColors.blackColor,
                                 fontFamily: poppinsMedium,
@@ -82,100 +84,27 @@ class Profile extends StatelessWidget {
               ),
               SizedBox(height: height / 80),
               Text(
-                EnString.wadeWarren,
+                box.read("nombre"),
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    color: AppColors.blackColor,
-                    fontSize: height / 42,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: poppinsMedium),
+                      color: AppColors.blackColor,
+                      fontSize: height / 42,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: poppinsMedium,
+                    ),
               ),
               SizedBox(
                 height: height / 50,
               ),
               GestureDetector(
-                  onTap: () {
-                    Get.toNamed(AppRoute.myaccount);
-                  },
-                  child:
-                      _catagory(context, EnString.myAccount, IconImage.user)),
-              // Container(
-              //   color: Colors.transparent,
-              //   width: kIsWeb ? width / 3.5 : width,
-              //   child: Divider(
-              //     indent: 55,
-              //     endIndent: 20,
-              //     thickness: 0.5,
-              //     color: AppColors.indicatorGreyColor,
-              //   ),
-              // ),
-              // GestureDetector(
-              //     onTap: () {
-              //       Get.toNamed(AppRoute.myorders);
-              //     },
-              //     child:
-              //         _catagory(context, EnString.myOrder, IconImage.myorder)),
-              // Container(
-              //   color: Colors.transparent,
-              //   width: kIsWeb ? width / 3.5 : width,
-              //   child: Divider(
-              //     indent: 55,
-              //     endIndent: 20,
-              //     thickness: 0.5,
-              //     color: AppColors.indicatorGreyColor,
-              //   ),
-              // ),
-              // GestureDetector(
-              //     onTap: () {
-              //       Get.toNamed(AppRoute.deliveryaddress);
-              //     },
-              //     child: _catagory(
-              //         context, EnString.myAddress, IconImage.myaddress)),
-              // Container(
-              //   color: Colors.transparent,
-              //   width: kIsWeb ? width / 3.5 : width,
-              //   child: Divider(
-              //     indent: 55,
-              //     endIndent: 20,
-              //     thickness: 0.5,
-              //     color: AppColors.indicatorGreyColor,
-              //   ),
-              // ),
-              // GestureDetector(
-              //     onTap: () {
-              //       Get.toNamed(AppRoute.paymentmethod);
-              //     },
-              //     child: _catagory(
-              //         context, EnString.paymentMethod, IconImage.payment)),
-              // Container(
-              //   color: Colors.transparent,
-              //   width: kIsWeb ? width / 3.5 : width,
-              //   child: Divider(
-              //     indent: 55,
-              //     endIndent: 20,
-              //     thickness: 0.5,
-              //     color: AppColors.indicatorGreyColor,
-              //   ),
-              // ),
-              // GestureDetector(
-              //     onTap: () => Get.toNamed(AppRoute.addtowishlist),
-              //     child: _catagory(
-              //         context, EnString.myWishlist, IconImage.wishlist)),
-              // Container(
-              //   color: Colors.transparent,
-              //   width: kIsWeb ? width / 3.5 : width,
-              //   child: Divider(
-              //     indent: 55,
-              //     endIndent: 20,
-              //     thickness: 0.5,
-              //     color: AppColors.indicatorGreyColor,
-              //   ),
-              // ),
-              // GestureDetector(
-              //     onTap: () {
-              //       Get.toNamed(AppRoute.settings);
-              //     },
-              //     child: _catagory(
-              //         context, EnString.accountSetting, IconImage.setting)),
+                onTap: () {
+                  Get.toNamed(AppRoute.editprofile);
+                },
+                child: _catagory(
+                  context,
+                  EnString.myAccount,
+                  IconImage.user,
+                ),
+              ),
               Container(
                 color: Colors.transparent,
                 width: kIsWeb ? width / 3.5 : width,
@@ -264,6 +193,7 @@ class Profile extends StatelessWidget {
     showDialog(
       context: context,
       builder: (BuildContext context) {
+        GetStorage box = GetStorage();
         return AlertDialog(
           contentPadding: EdgeInsets.zero,
           titlePadding: const EdgeInsets.only(top: 20),
@@ -306,9 +236,9 @@ class Profile extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style:
                             Theme.of(context).textTheme.headlineSmall?.copyWith(
-                                fontSize: height / 55,
-                                // color: const Color(0xffF04949),
-                                fontFamily: poppinsMedium),
+                                  fontSize: height / 55,
+                                  fontFamily: poppinsMedium,
+                                ),
                       ),
                     ),
                   ],
@@ -342,7 +272,10 @@ class Profile extends StatelessWidget {
                   ),
                   SizedBox(width: width / 25),
                   GestureDetector(
-                    onTap: () => Get.offAllNamed(AppRoute.loginscreen),
+                    onTap: () {
+                      box.remove('token');
+                      Get.offAllNamed(AppRoute.loginscreen);
+                    },
                     child: Container(
                       height: height / 17,
                       width: width / 3.5,

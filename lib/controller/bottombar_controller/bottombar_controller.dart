@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../view/home_categories/categories.dart';
-import '../../view/home_categories/fashion_category.dart';
 import '../../view/my_cart_screen/mycartscreen.dart';
 
 import '../../view/home_screen/home_screen.dart';
 import '../../view/profile/profile.dart';
-
 
 class BottomBarController extends GetxController {
   RxInt currentIndex = 0.obs;
@@ -19,15 +17,15 @@ class BottomBarController extends GetxController {
     if (value == true) {
       _pageList.value = [
         HomeScreen(bottomBarController: this),
-        FashionCategory(isClick: true),
-        MyCart(isBackButtonShow: false),
+        CustumerView(isBackButtonShow: false),
+        // FashionCategory(isClick: true),
         const Profile(),
       ];
     } else if (value == false) {
       _pageList.value = [
         HomeScreen(bottomBarController: this),
-        const Categories(),
-        MyCart(isBackButtonShow: false),
+        CustumerView(isBackButtonShow: false),
+        // const Categories(),
         const Profile(),
       ];
     }
@@ -56,7 +54,7 @@ class BottomBarController extends GetxController {
     _pageList.value = [
       HomeScreen(bottomBarController: this),
       const Categories(),
-      MyCart(isBackButtonShow: false),
+      CustumerView(isBackButtonShow: false),
       const Profile(),
     ];
     changePageList(false);

@@ -13,7 +13,6 @@ import '../../../controller/productdetails_controller/productdetails_controller.
 import '../../../utils/textstyle/textstyle.dart';
 import '../my_cart_screen/mycartscreen.dart';
 
-
 class ProductDetails extends StatelessWidget {
   ProductDetails({Key? key}) : super(key: key);
 
@@ -32,19 +31,21 @@ class ProductDetails extends StatelessWidget {
         title: EnString.productDetails,
         action: [
           Padding(
-            padding: const EdgeInsets.only(top: 5.0,left: 8.0,right: 25 ),
+            padding: const EdgeInsets.only(top: 5.0, left: 8.0, right: 25),
             child: GestureDetector(
               onTap: () {
-                _productdetailsController.isSelect.value =  !_productdetailsController.isSelect.value;
+                _productdetailsController.isSelect.value =
+                    !_productdetailsController.isSelect.value;
               },
               child: CircleAvatar(
                 radius: height / 55,
-                backgroundColor:
-                AppColors.whiteColor,
+                backgroundColor: AppColors.whiteColor,
                 child: Center(
                   child: Obx(
-                    ()=> Image.asset( !_productdetailsController.isSelect.value ?
-                      IconImage.unfev : IconImage.fev,
+                    () => Image.asset(
+                      !_productdetailsController.isSelect.value
+                          ? IconImage.unfev
+                          : IconImage.fev,
                       height: height / 70,
                     ),
                   ),
@@ -99,7 +100,7 @@ class ProductDetails extends StatelessWidget {
                   const Spacer(),
                   GestureDetector(
                     onTap: () {
-                      Get.to(MyCart(
+                      Get.to(CustumerView(
                         isBackButtonShow: true,
                       ));
                     },
@@ -166,7 +167,7 @@ class ProductDetails extends StatelessWidget {
                           children:
                               _productdetailsController.buildPageIndicator(),
                         ),
-                         SizedBox(height:height /  40),
+                        SizedBox(height: height / 40),
                       ],
                     ),
                   ],
@@ -263,14 +264,22 @@ class ProductDetails extends StatelessWidget {
                       SizedBox(width: width / 80),
                       Text(
                         "4.8",
-                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                            fontSize: height / 50, fontFamily: poppinsMedium),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(
+                                fontSize: height / 50,
+                                fontFamily: poppinsMedium),
                       ),
                       SizedBox(width: width / 80),
                       Text(
                         "(305 Reviews)",
-                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                            fontSize: height / 50, fontFamily: poppinsMedium),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(
+                                fontSize: height / 50,
+                                fontFamily: poppinsMedium),
                       ),
                     ],
                   ),

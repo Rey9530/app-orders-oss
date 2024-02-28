@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../components/textbutton.dart';
 import '../../config/approutes/approutes.dart';
 import '../../config/colors/colors.dart';
 import '../../config/enstring/enstring.dart';
@@ -67,132 +68,193 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding:
-                    EdgeInsets.only(left: kIsWeb ? width / 100 : width / 20),
-                child: Row(
+          child: Obx(() {
+            return Column(
+              children: [
+                SizedBox(height: height / 100),
+                _searchField(),
+                SizedBox(height: height / 70),
+                Container(
+                  color: Colors.transparent,
+                  width: width / 1.1,
+                  height: kIsWeb ? height / 3 : height / 4.35,
+                  child: PageView(
+                    physics: const ClampingScrollPhysics(),
+                    controller: _homeScreenController.pageController,
+                    onPageChanged: (int page) {
+                      _homeScreenController.currentbanner.value = page;
+                    },
+                    children: <Widget>[
+                      Image.asset(
+                        AppImage.bannersuperoffers,
+                      ),
+                      Image.asset(
+                        AppImage.bannerpromoad,
+                      ),
+                      Image.asset(
+                        AppImage.bannersuperoffers,
+                      ),
+                      Image.asset(
+                        AppImage.bannerpromoad,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: height / 55),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: _homeScreenController.buildPageIndicator(),
+                ),
+                SizedBox(height: height / 55),
+                Padding(
+                  padding:
+                      EdgeInsets.only(left: kIsWeb ? width / 100 : width / 20),
+                  child: Row(
+                    children: [
+                      Obx(() => languageController.arb.value
+                          ? SizedBox(width: kIsWeb ? width / 80 : width / 20)
+                          : const SizedBox.shrink()),
+                      Text(
+                        EnString.allCategories,
+                        style:
+                            Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                  fontSize: height / 40,
+                                  fontFamily: poppinsMedium,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.blackColor,
+                                ),
+                      ),
+                      const Spacer(),
+
+                      ///Text Button
+                      CustomTextButton(
+                          buttonText: 'See All',
+                          onPressed: () {
+                            Get.find<BottomBarController>()
+                                .changePage(bottomNavIndex: 1);
+                          }),
+                      Obx(
+                        () => languageController.arb.value
+                            ? const SizedBox.shrink()
+                            : SizedBox(width: kIsWeb ? width / 80 : width / 20),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(height: height / 55),
+
+                /// ============= All Categories =============
+                _allCategories(context),
+                SizedBox(height: height / 55),
+                Row(
                   children: [
                     Obx(() => languageController.arb.value
                         ? SizedBox(width: kIsWeb ? width / 80 : width / 20)
                         : const SizedBox.shrink()),
-                    Text(
-                      EnString.allCategories,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineSmall
-                          ?.copyWith(
-                              fontSize: height / 40,
-                              fontFamily: poppinsMedium,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.blackColor),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: kIsWeb ? width / 100 : width / 19),
+                      child: Text(
+                        EnString.popularProducts,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(
+                                fontSize: height / 40,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: poppinsMedium,
+                                color: AppColors.blackColor),
+                      ),
                     ),
                     const Spacer(),
+                    CustomTextButton(
+                        buttonText: 'See All',
+                        onPressed: () {
+                          Get.toNamed(AppRoute.mansjeans);
+                        }),
+                    Obx(
+                      () => languageController.arb.value
+                          ? const SizedBox.shrink()
+                          : SizedBox(width: kIsWeb ? width / 80 : width / 20),
+                    )
                   ],
                 ),
-              ),
-              SizedBox(height: height / 55),
+                SizedBox(height: height / 55),
 
-              /// ============= All Categories =============
-              _allCategories(context),
-              SizedBox(height: height / 55),
-              Row(
-                children: [
-                  Obx(() => languageController.arb.value
-                      ? SizedBox(width: kIsWeb ? width / 80 : width / 20)
-                      : const SizedBox.shrink()),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: kIsWeb ? width / 100 : width / 19),
-                    child: Text(
-                      EnString.popularProducts,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineSmall
-                          ?.copyWith(
-                              fontSize: height / 40,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: poppinsMedium,
-                              color: AppColors.blackColor),
+                /// ============= Popular Products =============
+                _popularProduct(context),
+                SizedBox(height: height / 55),
+                Row(
+                  children: [
+                    Obx(() => languageController.arb.value
+                        ? SizedBox(width: kIsWeb ? width / 80 : width / 20)
+                        : const SizedBox.shrink()),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: kIsWeb ? width / 100 : width / 19),
+                      child: Text(
+                        EnString.dealsOfTheDay,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(
+                                fontSize: height / 40,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: poppinsMedium,
+                                color: AppColors.blackColor),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              // SizedBox(height: height / 55),
+                    const Spacer(),
+                    CustomTextButton(buttonText: 'See All', onPressed: () {}),
+                    Obx(
+                      () => languageController.arb.value
+                          ? const SizedBox.shrink()
+                          : SizedBox(width: kIsWeb ? width / 80 : width / 20),
+                    )
+                  ],
+                ),
+                SizedBox(height: height / 55),
 
-              /// ============= Popular Products =============
-              // _popularProduct(context),
-              // SizedBox(height: height / 55),
-              // Row(
-              //   children: [
-              //     Obx(() => languageController.arb.value
-              //         ? SizedBox(width: kIsWeb ? width / 80 : width / 20)
-              //         : const SizedBox.shrink()),
-              //     Padding(
-              //       padding: EdgeInsets.only(
-              //           left: kIsWeb ? width / 100 : width / 19),
-              //       child: Text(
-              //         EnString.dealsOfTheDay,
-              //         style: Theme.of(context)
-              //             .textTheme
-              //             .headlineSmall
-              //             ?.copyWith(
-              //                 fontSize: height / 40,
-              //                 fontWeight: FontWeight.w500,
-              //                 fontFamily: poppinsMedium,
-              //                 color: AppColors.blackColor),
-              //       ),
-              //     ),
-              //     const Spacer(),
-              //     CustomTextButton(buttonText: 'See All', onPressed: () {}),
-              //     Obx(
-              //       () => languageController.arb.value
-              //           ? const SizedBox.shrink()
-              //           : SizedBox(width: kIsWeb ? width / 80 : width / 20),
-              //     )
-              //   ],
-              // ),
-              // SizedBox(height: height / 55),
+                /// ============= Deal of the Day =============
+                _dealsOfTheDay(context),
+                SizedBox(height: height / 55),
+                Row(
+                  children: [
+                    Obx(() => languageController.arb.value
+                        ? SizedBox(width: kIsWeb ? width / 80 : width / 20)
+                        : const SizedBox.shrink()),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: kIsWeb ? width / 100 : width / 19),
+                      child: Text(
+                        EnString.hotsellingproducts,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(
+                                fontSize: height / 40,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: poppinsMedium,
+                                color: AppColors.blackColor),
+                      ),
+                    ),
+                    const Spacer(),
+                    CustomTextButton(buttonText: 'See All', onPressed: () {}),
+                    Obx(
+                      () => languageController.arb.value
+                          ? const SizedBox.shrink()
+                          : SizedBox(width: kIsWeb ? width / 80 : width / 20),
+                    )
+                  ],
+                ),
+                SizedBox(height: height / 55),
 
-              /// ============= Deal of the Day =============
-              // _dealsOfTheDay(context),
-              // SizedBox(height: height / 55),
-              // Row(
-              //   children: [
-              //     Obx(() => languageController.arb.value
-              //         ? SizedBox(width: kIsWeb ? width / 80 : width / 20)
-              //         : const SizedBox.shrink()),
-              //     Padding(
-              //       padding: EdgeInsets.only(
-              //           left: kIsWeb ? width / 100 : width / 19),
-              //       child: Text(
-              //         EnString.hotsellingproducts,
-              //         style:
-              //             Theme.of(context).textTheme.headlineSmall?.copyWith(
-              //                   fontSize: height / 40,
-              //                   fontWeight: FontWeight.w500,
-              //                   fontFamily: poppinsMedium,
-              //                   color: AppColors.blackColor,
-              //                 ),
-              //       ),
-              //     ),
-              //     const Spacer(),
-              //     CustomTextButton(buttonText: 'See All', onPressed: () {}),
-              //     Obx(
-              //       () => languageController.arb.value
-              //           ? const SizedBox.shrink()
-              //           : SizedBox(width: kIsWeb ? width / 80 : width / 20),
-              //     )
-              //   ],
-              // ),
-              // SizedBox(height: height / 55),
-
-              // /// ============= Hot Selling Products =============
-              // _hotSellingProducts(context),
-              // SizedBox(height: height / 30),
-            ],
-          ),
+                /// ============= Hot Selling Products =============
+                _hotSellingProducts(context),
+                SizedBox(height: height / 30),
+              ],
+            );
+          }),
         ),
       ),
     );

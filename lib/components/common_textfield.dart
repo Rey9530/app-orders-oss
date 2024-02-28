@@ -34,11 +34,14 @@ class CommonTextfield extends StatelessWidget {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: validator,
         controller: controller,
-        style:
-            TextStyle(color: AppColors.blackColor, fontFamily: poppinsRegular),
+        style: TextStyle(
+          color: AppColors.blackColor,
+          fontFamily: poppinsRegular,
+        ),
         keyboardType: keyboardType,
         decoration: InputDecoration(
           counterText: '',
+          label: Text(hinttext),
           hintText: hinttext,
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 20, vertical: 20),

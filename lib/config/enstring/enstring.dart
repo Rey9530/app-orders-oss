@@ -329,7 +329,7 @@ class EnString {
   static String get yourProductDesPatch =>
       "Tu producto se despacha en 1-2 días hábiles. Entregado en tu puerta.";
 
-  static String get allCategories => "Todas las categorías";
+  static String get allCategories => "Todos los tipos";
 
   static String get search => "Buscar";
 
@@ -358,11 +358,11 @@ class EnString {
 
   static String get seeAll => "Ver todo";
 
-  static String get fashion => "Moda";
+  static String get fashion => "Ropa";
 
   static String get electronics => "Electrónica";
 
-  static String get grocery => "Comestibles";
+  static String get grocery => "Tiendas";
 
   static String get pharmacy => "Farmacia";
 
@@ -374,7 +374,7 @@ class EnString {
 
   static String get kitchen => "Cocina";
 
-  static String get popularProducts => "Productos populares";
+  static String get popularProducts => "Ordenes recientes";
 
   static String get dealsOfTheDay => "Ofertas del día";
 
@@ -420,7 +420,7 @@ class EnString {
 
   static String get naturefoundation => "Fundación Nature";
 
-  static String get categories => "Categorías";
+  static String get customers => "Clientes";
 
   static String get cart => "Carrito";
 

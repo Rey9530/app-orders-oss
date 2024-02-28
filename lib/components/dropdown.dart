@@ -39,10 +39,11 @@ class _DropDownDemoState extends State<DropDownDemo> {
                 child: DropdownButton<String>(
                   value: _chosenValue,
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      fontSize: height / 50,
-                      color: AppColors.indicatorGreyColor,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: poppinsRegular),
+                        fontSize: height / 50,
+                        color: AppColors.indicatorGreyColor,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: poppinsRegular,
+                      ),
                   iconSize: 25,
                   underline: const SizedBox(),
                   items:

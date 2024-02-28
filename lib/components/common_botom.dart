@@ -29,18 +29,11 @@ commonBottomBar({index, onClick}) {
           index == 1 ? IconImage.dotecatogory : IconImage.categories,
           height: height / 33,
         ),
-        label: EnString.categories,
+        label: EnString.customers,
       ),
       BottomNavigationBarItem(
         icon: Image.asset(
-          index == 2 ? IconImage.dotecart : IconImage.cart,
-          height: height / 33,
-        ),
-        label: EnString.cart,
-      ),
-      BottomNavigationBarItem(
-        icon: Image.asset(
-          index == 3 ? IconImage.profiledote : IconImage.profile,
+          index == 2 ? IconImage.profiledote : IconImage.profile,
           height: height / 33,
         ),
         label: EnString.profile,
