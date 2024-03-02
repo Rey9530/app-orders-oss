@@ -5,6 +5,14 @@ class Validation {
     if (value == null || value.isEmpty) {
       return errortext;
     }
+    RegExp emailRegExp = RegExp(
+      r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+    );
+
+    bool esCorreoValido = emailRegExp.hasMatch(value);
+    if (!esCorreoValido) {
+      return errortext;
+    }
     return null;
   }
 

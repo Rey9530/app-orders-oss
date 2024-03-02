@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../config/colors/colors.dart';
 import '../config/fontfamily.dart';
@@ -8,12 +9,13 @@ import '../utils/sizeconfig/sizeconfig.dart';
 
 class CommonTextfield extends StatelessWidget {
   final String hinttext;
+  final String? label;
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final String? Function(String?)? onchange;
   final bool obscuretext;
   final TextInputType? keyboardType;
-
+  final List<TextInputFormatter>? inputFormatters;
   const CommonTextfield({
     Key? key,
     required this.hinttext,
@@ -21,6 +23,8 @@ class CommonTextfield extends StatelessWidget {
     required this.validator,
     required this.onchange,
     required this.obscuretext,
+    this.label,
+    this.inputFormatters,
     this.keyboardType,
   }) : super(key: key);
 
@@ -39,9 +43,10 @@ class CommonTextfield extends StatelessWidget {
           fontFamily: poppinsRegular,
         ),
         keyboardType: keyboardType,
+        inputFormatters: [...?inputFormatters],
         decoration: InputDecoration(
           counterText: '',
-          label: Text(hinttext),
+          label: Text(label ?? hinttext),
           hintText: hinttext,
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 20, vertical: 20),

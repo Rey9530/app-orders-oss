@@ -514,6 +514,8 @@ class EnString {
 
   static String get editProfile => "Editar perfil";
 
+  static String get addCustumer => "Crear cliente";
+
   static String get confirmPayment => "Ingresa tu PIN para confirmar el pago";
 
   static String get changePassword => "Cambiar contraseña";

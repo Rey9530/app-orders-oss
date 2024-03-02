@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import '../../../../components/buttons.dart';
 import '../../../../components/common_textfield.dart';
 import '../../../../components/customappbar/custom_appbar.dart';
-import '../../../../components/dropdown.dart';
 import '../../../../components/validation/validation.dart';
 import '../../../../config/colors/colors.dart';
 import '../../../../config/enstring/enstring.dart';
@@ -18,7 +17,8 @@ import '../../controller/add_new_address_controller/add_new_address_controller.d
 class AddNewAddress extends StatelessWidget {
   AddNewAddress({Key? key}) : super(key: key);
 
-  final AddNewAddressController _addNewAddressController = Get.put(AddNewAddressController());
+  final AddNewAddressController _addNewAddressController =
+      Get.put(AddNewAddressController());
   final _form = GlobalKey<FormState>();
 
   @override
@@ -37,10 +37,10 @@ class AddNewAddress extends StatelessWidget {
             key: _form,
             child: Column(
               children: [
-                DropDownDemo(
-                  data: _addNewAddressController.items,
-                  hint: 'Office/Home',
-                ),
+                // DropDownDemo(
+                //   data: _addNewAddressController.items,
+                //   hint: 'Office/Home',
+                // ),
                 SizedBox(
                   height: height / 50,
                 ),
@@ -72,7 +72,8 @@ class AddNewAddress extends StatelessWidget {
                     controller: _addNewAddressController.houseno,
                     validator: (value) {
                       return Validation.normalvalidation(
-                          value: value, errortext: "Please Enter ${EnString.houseNo}");
+                          value: value,
+                          errortext: "Please Enter ${EnString.houseNo}");
                     },
                     onchange: (value) {
                       return null;
@@ -91,7 +92,8 @@ class AddNewAddress extends StatelessWidget {
                     controller: _addNewAddressController.streetname,
                     validator: (value) {
                       return Validation.normalvalidation(
-                          value: value, errortext: "Please Enter ${EnString.streetName}");
+                          value: value,
+                          errortext: "Please Enter ${EnString.streetName}");
                     },
                     onchange: (value) {
                       return null;
@@ -110,7 +112,8 @@ class AddNewAddress extends StatelessWidget {
                     controller: _addNewAddressController.pincode,
                     validator: (value) {
                       return Validation.normalvalidation(
-                          value: value, errortext: "Please Enter ${EnString.pinCode}");
+                          value: value,
+                          errortext: "Please Enter ${EnString.pinCode}");
                     },
                     onchange: (value) {
                       return null;
@@ -129,7 +132,8 @@ class AddNewAddress extends StatelessWidget {
                     controller: _addNewAddressController.towncity,
                     validator: (value) {
                       return Validation.normalvalidation(
-                          value: value, errortext: "Please Enter ${EnString.townCity}");
+                          value: value,
+                          errortext: "Please Enter ${EnString.townCity}");
                     },
                     onchange: (value) {
                       return null;
@@ -139,10 +143,10 @@ class AddNewAddress extends StatelessWidget {
                 SizedBox(
                   height: height / 50,
                 ),
-                DropDownDemo(
-                  data: _addNewAddressController.countryitems,
-                  hint: 'Country',
-                ),
+                // DropDownDemo(
+                //   data: _addNewAddressController.countryitems,
+                //   hint: 'Country',
+                // ),
                 SizedBox(
                   height: height / 50,
                 ),
@@ -165,14 +169,17 @@ class AddNewAddress extends StatelessWidget {
                   height: height / 50,
                 ),
                 Padding(
-                  padding:
-                      EdgeInsets.only(left: kIsWeb ? width / 2.7 : width / 30,right:kIsWeb ? width / 2.7 : width / 30 ),
+                  padding: EdgeInsets.only(
+                      left: kIsWeb ? width / 2.7 : width / 30,
+                      right: kIsWeb ? width / 2.7 : width / 30),
                   child: Row(
                     children: [
                       Transform.scale(
                         scale: 0.7,
                         child: CupertinoSwitch(
-                            thumbColor: _addNewAddressController.on.value ?  AppColors.lightBlueColor : AppColors.whiteColor,
+                            thumbColor: _addNewAddressController.on.value
+                                ? AppColors.lightBlueColor
+                                : AppColors.whiteColor,
                             activeColor:
                                 AppColors.lightBlueColor.withOpacity(0.3),
                             onChanged: (val) =>
@@ -192,9 +199,12 @@ class AddNewAddress extends StatelessWidget {
                     ],
                   ),
                 ),
-                 SizedBox(height: height / 55,),
+                SizedBox(
+                  height: height / 55,
+                ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: SizeConfig.kPadding12),
+                  padding:
+                      EdgeInsets.symmetric(vertical: SizeConfig.kPadding12),
                   child: Buttons(
                     btnText: EnString.save,
                     buttonColor: AppColors.lightBlueColor,
@@ -205,7 +215,9 @@ class AddNewAddress extends StatelessWidget {
                     },
                   ),
                 ),
-                SizedBox(height: height / 55,),
+                SizedBox(
+                  height: height / 55,
+                ),
               ],
             ),
           ),

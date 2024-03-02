@@ -10,6 +10,7 @@ import 'view/home_categories/man_jeans.dart';
 import 'view/home_categories/rating_reviews.dart';
 import 'view/my_address/new_address.dart';
 import 'view/my_address/delivery_address.dart';
+import 'view/my_cart_screen/add.edit.customer.dart';
 import 'view/my_cart_screen/applycoupon.dart';
 import 'view/my_cart_screen/checkout.dart';
 import 'view/my_cart_screen/empty_cart.dart';
@@ -96,6 +97,10 @@ class MyApp extends StatelessWidget {
           home: SplashScreen(),
           getPages: [
             GetPage(name: AppRoute.loginscreen, page: () => LoginScreen()),
+            GetPage(
+              name: AppRoute.addcustomerscreen,
+              page: () => const AddEditCustomerScreen(),
+            ),
             GetPage(name: AppRoute.createaccount, page: () => CreateAccount()),
             GetPage(name: AppRoute.otpscreen, page: () => const OtpScreen()),
             GetPage(

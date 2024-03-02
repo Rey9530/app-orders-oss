@@ -5,6 +5,7 @@ class AppRoute {
   static const String otpscreen = '/otpscreen';
   static const String forgotpassword = '/forgotpassword';
   static const String homescreen = '/HomeScreen';
+  static const String addcustomerscreen = '/addcustomerscreen';
   static const String bottomBar = '/BottomBar';
   static const String checkout = '/Checkout';
   static const String applycoupon = '/ApplyCoupon';
